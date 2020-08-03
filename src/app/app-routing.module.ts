@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { TasksPage } from './tasks/tasks.page';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
+  { path: 'tasks', loadChildren: './tasks/tasks.module#TasksPageModule' }
 ];
 
 @NgModule({

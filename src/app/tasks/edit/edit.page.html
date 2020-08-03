@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot = "start">
+          <ion-back-button defaultHref = "/tasks/task-list"></ion-back-button>
+        </ion-buttons>
+    <ion-title>Edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form (ngSubmit) = "onSubmit(f)" #f="ngForm">
+      <ion-item>
+        <ion-label position="floating">Task Name</ion-label>
+        <ion-input
+          type = "text"
+          [(ngModel)]="task.title"
+          name = "name"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position = "floating">End date</ion-label>
+        <ion-datetime
+          display-format = "MMM DD YYYY"
+          picker-format = "YY MMM DD"
+          [min] = "minDate.toISOString()"
+          max = "2100"
+          required
+          date
+          [(ngModel)]="task.date"
+          name = "endDate"
+        ></ion-datetime>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Details</ion-label>
+          <ion-textarea 
+            rows = "3"
+            [(ngModel)]="task.details"
+            name = "details"
+            ></ion-textarea>
+        </ion-item>
+      <!-- <ion-fab type = "submit" vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button 
+            
+            [disabled]="!f.valid">
+            <ion-icon name="checkmark"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>     -->
+        <ion-button
+         class="ion-float-end"
+         shape="round"
+         [disabled]="!f.valid"
+         type = "submit"
+         margin
+        ><ion-icon slot="start" name="checkmark"></ion-icon>Save</ion-button>
+    </form>
+  </ion-content>
+  
